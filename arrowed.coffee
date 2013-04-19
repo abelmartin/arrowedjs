@@ -64,4 +64,4 @@ window.ArrowJS =
       target_offset.top - @_target_padding + $target.height()
     ]
 
-    @_draw_arrow(@_center($source_selector), target_location)
+    @_draw_arrow( @_center($source_selector), target_location )
