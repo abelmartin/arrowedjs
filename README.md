@@ -29,6 +29,7 @@ Here's what you need to know:
 ### Arrowed.init arrow-options:
   * [An object of arrow initializations](http://raphaeljs.com/reference.html#Element.attr)
   * The default will be...
+
   ```
   {
 		stroke: 'rgb(57, 180, 213)' / blue

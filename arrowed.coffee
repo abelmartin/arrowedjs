@@ -7,15 +7,20 @@
 
 window.ArrowJS =
   _paper: null
-  _paper_element: 'body'
   _target: null
   _source: null
+
+  _paper_element: 'body'
+  _target_padding: 15
 
   _arrow_attrs:
     stroke: 'rgb(57, 180, 213)'
     'stroke-width': 6
     'stroke-linecap': 'round'
     'arrow-end': 'open-wide-midium'
+
+  _debug_stroke: ->
+    @_paper.rect(0, 0, 700, 400, 10).attr({stroke: "#f00"}) if @_paper?
 
   _center: ($element) ->
     offset = $element.offset()
@@ -24,29 +29,7 @@ window.ArrowJS =
       offset.top + ($element.height() / 2)
     ]
 
-  _debug_stroke: ->
-    @_paper.rect(0, 0, 700, 400, 10).attr({stroke: "#f00"}) if @_paper?
-
-  init: (stage_attrs, arrow_attrs) ->
-
-  clear: ->
-    @_paper.clear()
-    @_debug_stroke() if @_debug?
-
-  next: (step_number) ->
-    $step_image = $('.step_image_' + step_number, @$selector)
-    $step_image.show()
-    if @_targets[step_number-1]?
-      $target = $(@_targets[step_number-1])
-      target_offset = $target.offset()
-      target_padding = 15
-      target_location = [
-        target_offset.left + target_padding
-        target_offset.top - target_padding + $target.height()
-      ]
-      @draw_arrow(@_center($step_image), target_location)
-
-  draw_arrow: (image_center_location, target_end_location) ->
+  _draw_arrow: (image_center_location, target_end_location) ->
     curve_outlier_location = [0, 220]
 
     arrow_path = [
@@ -56,16 +39,29 @@ window.ArrowJS =
 
     arrow = @_paper.path(arrow_path).attr( @_arrow_attrs )
 
-  start: (e) ->
-    e.preventDefault() if e?
-
-    @$selector.show()
-    @current_step = 1
-
+  init: (stage_attrs, arrow_attrs) ->
+    @_stage_attrs = stage_attrs
+    @_arrow_attrs = arrow_attrs
     unless @_paper?
       @_paper = Raphael('how_it_works', 700, 400)
       $('svg', @$selector).attr(
         'style', 'overflow: hidden; position: absolute;'
       )
 
-    @next(1)
+  clear: ->
+    @_paper.clear()
+    @_debug_stroke() if @_debug?
+
+  remove: ->
+    @_paper.remove()
+
+  draw: (source_selector, target_selector, options) ->
+    $source = $(source_selector)
+    $target = $(target_selector)
+    target_offset = $target.offset()
+    target_location = [
+      target_offset.left + @_target_padding
+      target_offset.top - @_target_padding + $target.height()
+    ]
+
+    @_draw_arrow(@_center($source_selector), target_location)
