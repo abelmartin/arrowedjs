@@ -1,6 +1,6 @@
 ---
-title: "Examples"
-description: "Examples"
+layout: page
+title: Examples
 ---
 
 # test
