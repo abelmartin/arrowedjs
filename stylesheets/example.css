@@ -1,0 +1,11 @@
+.widget {
+  border: solid 2px navy;
+  font-size: 25px;
+  padding: 100px 0px;
+  text-align: center;
+  width: 200px;
+}
+
+.target {
+  float: right;
+}

@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
   <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
   <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+  <link rel="stylesheet" type="text/css" href="stylesheets/example.css" />
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -32,6 +33,18 @@
 
           <div class='example_container'>
             <h2>Simple Pointing</h2>
+
+            <h3>From the middle of the source to the middle of the target</h3>
+            <div id='target_1' class='widget target'>Target</div>
+            <div id='source_1' class='widget'>Source</div>
+
+            <h3>From the top right of the source to the bottom left of the target</h3>
+            <div id='target_2' class='widget target'>Target</div>
+            <div id='source_2' class='widget'>Source</div>
+
+            <h3>From the middle bottom of the source to the middle bottom of the target</h3>
+            <div id='target_3' class='widget target'>Target</div>
+            <div id='source_3' class='widget'>Source</div>
           </div>
 
           <div class='example_container'>
@@ -67,6 +80,9 @@
     <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js'></script>
     <script src='https://raw.github.com/abelmartin/arrowedjs/master/arrowed.js'></script>
+    <script>
+      ArrowJS.init();
+    </script>
 
     <script type="text/javascript">
     var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
