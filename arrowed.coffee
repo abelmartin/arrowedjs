@@ -38,11 +38,11 @@ window.ArrowJS =
 
     arrow = @_paper.path(arrow_path).attr( @_arrow_attrs )
 
-  init: (stage_attrs, arrow_attrs) ->
+  init: (stage_attrs, arrow_attrs = {}) ->
     @_stage_attrs = stage_attrs
     @_arrow_attrs = arrow_attrs
     unless @_paper?
-      @_paper = Raphael('how_it_works', 700, 400)
+      @_paper = Raphael(stage_attrs.container, stage_attrs.width, stage_attrs.height)
       $('svg', @$selector).attr(
         'style', 'overflow: hidden; position: absolute;'
       )
