@@ -1,6 +1,5 @@
 ###
-  ArrowedJS
-  Version 1.0
+  ArrowedJS 0.5
   Copyright (c) 2013 Abel Martin
   Licensed under the MIT license
 ###
